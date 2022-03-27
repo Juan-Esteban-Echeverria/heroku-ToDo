@@ -1,0 +1,18 @@
+
+    <h1>Eliminar Tareas</h1>
+    <p>Quieres eliminar la tarea de id: <b>{{id}}</b></p>
+    <button id="boton">Eliminar</button>
+
+<!--FUNCION QUE CONECTA CON LA API DELETE-->
+<script>
+document.getElementById("boton").addEventListener("click", eliminar);
+
+function eliminar(){
+    fetch("/users/{{id}}", {method: "delete"})
+    .then(() => (window.location.href = "/"))
+}
+</script>
+
+
+
+

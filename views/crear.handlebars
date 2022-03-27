@@ -1,0 +1,26 @@
+
+<h1>crear</h1>
+
+<!--FORMULARIO PARA CREAR-->
+    <label for="POST-name">Username:</label>
+    <input type="text" name="username" id="POST-username">
+    <label for="POST-name">Email:</label>
+    <input type="text" name="email" id="POST-email">
+    <label for="POST-name">Contrasenia:</label>
+    <input type="text" name="contrasenia" id="POST-contrasenia">
+    <button type="submit" value="Save" onclick="crear()">Crear</button>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!--FUNCION AXIOS QUE CONECTA CON LA API CREATE-->
+<script>
+    const entradas = document.querySelectorAll("input")
+
+    const crear = () => {
+        const form = Object.fromEntries([...entradas].map(e => ([e.name,e.value])))
+        console.log(form)
+        axios.post("/users", form)
+        .then(()=> (window.location.href = "/"))
+    }
+</script>

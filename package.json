@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "node index.js",
+    "migrar": "node -e \"require('./base-de-datos').migrar()\"",
+    "test": "node -e \"require('./base-de-datos').probar()\""
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "pg": "^8.7.3"
+  }
+}
