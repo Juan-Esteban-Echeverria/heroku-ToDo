@@ -13,11 +13,14 @@ app.set('view engine', 'handlebars');
 app.use('/static', express.static('public'))
 app.use(express.json())
 
+const helpers = {
+    formatear: (fecha) => new Date(fecha).toISOString().split("T")[0]
+}
 
 // RUTA RAIZ
 app.get('/', async (req, res) => {
     const users = await getUser()
-    res.render('index', { users });
+    res.render('index', { users, helpers });
 })
 
 // RUTA PARA FORMULARIO DE CREAR USERS
