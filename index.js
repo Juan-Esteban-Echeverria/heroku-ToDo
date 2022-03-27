@@ -41,10 +41,15 @@ app.get('/user-delete/:id', async(req, res) => {
      return res.json(respuesta)
  })
 // API POST
-app.post("/users", async (req, res) => {
+app.post("/users",  (req, res) => {
     const {username, email, contrasenia} = req.body
-    const respuesta = await postUser(username, email, contrasenia)
-    return res.status(201).json(respuesta)
+
+    postUser(username, email, contrasenia)
+    .then(row => res.status(201).json(row))
+    .catch(err => {
+        console.error(err);
+        res.sendStatus(500)
+    })
 })
 // API DELETE
 app.delete("/users/:id", async(req, res) => {

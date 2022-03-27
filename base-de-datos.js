@@ -9,17 +9,13 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 })
 
-const postUser = async(username, email, contrasenia) => {
+const postUser = (username, email, contrasenia) => {
     const text = "INSERT INTO users (username, email, contrasenia) values ($1, $2, $3) RETURNING *"
     const values = [username, email, contrasenia]
 
-    try {
-        const respuesta = await pool.query(text, values)
-        return respuesta.rows
-    } catch (error) {
-        console.log(error)
-        return error
-    }
+
+    return pool.query(text, values)
+    .then(res => res.rows[0])
 }
 
 const getUser = async() => {

@@ -22,5 +22,8 @@
         console.log(form)
         axios.post("/users", form)
         .then(()=> (window.location.href = "/"))
+        .catch(() => {
+            window.alert("Este usuario o mail ya existen")
+        })
     }
 </script>
